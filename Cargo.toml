@@ -8,3 +8,10 @@ edition = "2021"
 [dependencies]
 once_cell = "1.18.0"
 regex = "1.10.2"
+
+[dev-dependencies]
+criterion = "0.5.1"
+
+[[bench]]
+name = "parse_devices"
+harness = false

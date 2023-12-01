@@ -1,5 +1,5 @@
 use crate::devices::{DeviceBuilder, DeviceCollection};
-use std::io::{BufRead, Result};
+use std::io::{Result};
 use reader::{InputDeviceReader};
 
 pub mod devices;
