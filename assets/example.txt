@@ -1,0 +1,29 @@
+I: Bus=0020 Vendor=0000 Product=0004 Version=0000
+N: Name="Sleep Button"
+P: Phys=PNP0C1E/button/input0
+S: Sysfs=/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0E:00/input/input0
+U: Uniq=test
+H: Handlers=kbd event0
+B: PROP=0
+B: EV=14
+B: KEY=ffff0000 0 0 0 0
+B: REL=1943
+B: MSC=10
+B: SW=140
+B: ABS=100000000
+B: LED=1f
+B: SND=0
+B: FF=10
+B: SW=1
+
+I: Bus=0003 Vendor=046d Product=c084 Version=0111
+N: Name="Logitech G102 Prodigy Gaming Mouse"
+P: Phys=usb-0000:00:14.0-10/input0
+S: Sysfs=/devices/pci0000:00/0000:00:14.0/usb1/1-10/1-10:1.0/0003:046D:C084.0003/input/input8
+U: Uniq=0D75396E3137
+H: Handlers=mouse0 event7
+B: PROP=0
+B: EV=17
+B: KEY=ffff0000 0 0 0 0
+B: REL=1943
+B: MSC=10
