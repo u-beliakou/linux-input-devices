@@ -1,15 +1,15 @@
 #[cfg(test)]
-mod tests {
+mod test_device_collection {
     use linux_input_devices::devices::{Device, DeviceCollection};
 
     #[test]
-    fn test_device_collection_create_happy_path() {
+    fn create_happy_path() {
         let collection = DeviceCollection::new();
         assert_eq!(0, collection.iter().count());
     }
 
     #[test]
-    fn test_device_collection_add_happy_path() {
+    fn add_happy_path() {
         let mut collection = DeviceCollection::new();
         collection.add(Device::default());
 
@@ -17,13 +17,13 @@ mod tests {
     }
 
     #[test]
-    fn test_device_collection_get_returns_none() {
+    fn get_returns_none() {
         let collection = DeviceCollection::new();
         assert!(collection.get(2).is_none());
     }
 
     #[test]
-    fn test_device_collection_get_happy_path() {
+    fn get_happy_path() {
         let mut collection = DeviceCollection::new();
         collection.add(create_dummy_device("Expected name"));
 

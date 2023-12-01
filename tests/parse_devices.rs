@@ -1,9 +1,9 @@
 #[cfg(test)]
-mod tests {
+mod test_parse_devices {
     use linux_input_devices::parse_devices;
 
     #[test]
-    fn test_parse_devices_happy_path() {
+    fn happy_path() {
         let collection = parse_devices("./assets/output_example.txt");
         assert_eq!(collection.iter().count(), 2);
 
