@@ -11,13 +11,12 @@ mod tests {
     #[test]
     fn test_device_collection_add_happy_path() {
         let mut collection = DeviceCollection::create();
-
         collection.add(create_dummy_device());
 
         assert_eq!(1, collection.iter().count());
     }
 
     fn create_dummy_device() -> Device {
-        Device{}
+        return Device::default();
     }
 }
