@@ -2,6 +2,7 @@ use crate::devices::DeviceCollection;
 
 pub mod devices;
 pub mod reader;
+pub mod parser;
 
 pub const INPUT_DEVICES_PATH: &str = "/proc/bus/input/devices";
 
