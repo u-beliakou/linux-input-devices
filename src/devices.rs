@@ -82,6 +82,17 @@ impl DeviceBuilder {
         }
     }
 
+    pub fn build_with_name(name: &str) -> Device {
+        let mut builder = DeviceBuilder::default();
+        builder.set(DV_PROP_NAME, name);
+
+        builder.build()
+    }
+
+    pub fn set(&mut self, key: &str, value: &str) {
+        self.state.insert(String::from(key), String::from(value));
+    }
+
     pub fn build(&self) -> Device {
         Device {
             identifier: DeviceIdentifier {
