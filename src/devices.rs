@@ -18,6 +18,10 @@ impl DeviceCollection {
     pub fn get(&self, idx: usize) -> Option<&Device> {
         self.devices.get(idx)
     }
+
+    pub fn find_one_by_name(&self, device_name: &str) -> Option<&Device> {
+        self.iter().find(|&device| device.name.contains(device_name))
+    }
 }
 
 #[allow(unused)]
