@@ -3,8 +3,8 @@ pub struct DeviceCollection {
 }
 
 impl DeviceCollection {
-    pub fn create() -> DeviceCollection {
-        DeviceCollection { devices: vec![] }
+    pub fn new() -> DeviceCollection {
+        DeviceCollection { devices: Vec::new() }
     }
 
     pub fn iter(&self) -> std::slice::Iter<Device> {

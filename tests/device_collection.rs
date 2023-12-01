@@ -4,13 +4,13 @@ mod tests {
 
     #[test]
     fn test_device_collection_create_happy_path() {
-        let collection = DeviceCollection::create();
+        let collection = DeviceCollection::new();
         assert_eq!(0, collection.iter().count());
     }
 
     #[test]
     fn test_device_collection_add_happy_path() {
-        let mut collection = DeviceCollection::create();
+        let mut collection = DeviceCollection::new();
         collection.add(create_dummy_device());
 
         assert_eq!(1, collection.iter().count());
