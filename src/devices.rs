@@ -1,3 +1,11 @@
+use std::collections::HashMap;
+use crate::parser::{
+    DV_BITMAP_ABS, DV_BITMAP_EV, DV_BITMAP_FF, DV_BITMAP_KEY, DV_BITMAP_LED,
+    DV_BITMAP_MSC, DV_BITMAP_PROP, DV_BITMAP_REL, DV_BITMAP_SND, DV_BITMAP_SW, DV_PROP_BUS,
+    DV_PROP_HANDLERS, DV_PROP_NAME, DV_PROP_PHYS, DV_PROP_PRODUCT, DV_PROP_SYSFS,
+    DV_PROP_UNIQ, DV_PROP_VENDOR, DV_PROP_VERSION
+};
+
 pub struct DeviceCollection {
     devices: Vec<Device>,
 }
@@ -59,4 +67,50 @@ pub struct DeviceBitmaps {
     pub snd: String,
     pub ff: String,
     pub sw: String,
+}
+
+#[derive(Default)]
+pub struct DeviceBuilder {
+    state: HashMap<String, String>,
+}
+
+impl DeviceBuilder {
+
+    pub fn with_state(hashmap: HashMap<String, String>) -> DeviceBuilder {
+        DeviceBuilder {
+            state: hashmap,
+        }
+    }
+
+    pub fn build(&self) -> Device {
+        Device {
+            identifier: DeviceIdentifier {
+                bus: self.get_prop(DV_PROP_BUS),
+                vendor: self.get_prop(DV_PROP_VENDOR),
+                product: self.get_prop(DV_PROP_PRODUCT),
+                version: self.get_prop(DV_PROP_VERSION),
+            },
+            name: self.get_prop(DV_PROP_NAME),
+            sysfs: self.get_prop(DV_PROP_SYSFS),
+            phys: self.get_prop(DV_PROP_PHYS),
+            uniq: self.get_prop(DV_PROP_UNIQ),
+            handlers: self.get_prop(DV_PROP_HANDLERS),
+            bitmaps: DeviceBitmaps {
+                prop: self.get_prop(DV_BITMAP_PROP),
+                ev: self.get_prop(DV_BITMAP_EV),
+                key: self.get_prop(DV_BITMAP_KEY),
+                rel: self.get_prop(DV_BITMAP_REL),
+                abs: self.get_prop(DV_BITMAP_ABS),
+                msc: self.get_prop(DV_BITMAP_MSC),
+                led: self.get_prop(DV_BITMAP_LED),
+                snd: self.get_prop(DV_BITMAP_SND),
+                ff: self.get_prop(DV_BITMAP_FF),
+                sw: self.get_prop(DV_BITMAP_SW),
+            },
+        }
+    }
+
+    fn get_prop(&self, key: &str) -> String {
+        self.state.get(key).cloned().unwrap_or_default()
+    }
 }

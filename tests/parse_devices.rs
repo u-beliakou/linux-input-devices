@@ -3,8 +3,18 @@ mod test_parse_devices {
     use linux_input_devices::parse_devices;
 
     #[test]
+    fn returns_error_on_file_does_not_exist() {
+        let result = parse_devices("/something/not/existing");
+        assert!(result.is_err());
+    }
+
+    #[test]
     fn happy_path() {
-        let collection = parse_devices("./assets/example.txt");
+        let result = parse_devices("./assets/example.txt");
+
+        assert!(result.is_ok());
+
+        let collection = result.unwrap();
         assert_eq!(collection.iter().count(), 2);
 
         let device = collection.get(0).unwrap();
