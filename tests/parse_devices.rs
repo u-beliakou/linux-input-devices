@@ -7,7 +7,7 @@ mod tests {
         let collection = parse_devices("./assets/output_example.txt");
         assert_eq!(collection.iter().count(), 2);
 
-        let device = collection.devices.get(0).unwrap();
+        let device = collection.get(0).unwrap();
         assert_eq!(device.identifier.bus, "0020");
         assert_eq!(device.identifier.vendor, "0000");
         assert_eq!(device.identifier.product, "0004");

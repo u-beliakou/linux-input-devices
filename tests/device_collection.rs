@@ -11,12 +11,29 @@ mod tests {
     #[test]
     fn test_device_collection_add_happy_path() {
         let mut collection = DeviceCollection::new();
-        collection.add(create_dummy_device());
+        collection.add(Device::default());
 
         assert_eq!(1, collection.iter().count());
     }
 
-    fn create_dummy_device() -> Device {
-        return Device::default();
+    #[test]
+    fn test_device_collection_get_returns_none() {
+        let collection = DeviceCollection::new();
+        assert!(collection.get(2).is_none());
+    }
+
+    #[test]
+    fn test_device_collection_get_happy_path() {
+        let mut collection = DeviceCollection::new();
+        collection.add(create_dummy_device("Expected name"));
+
+        assert_eq!("Expected name", collection.get(0).unwrap().name);
+    }
+
+    fn create_dummy_device(name: &str) -> Device {
+        let mut device = Device::default();
+        device.name = String::from(name);
+
+        device
     }
 }

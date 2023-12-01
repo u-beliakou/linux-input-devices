@@ -1,5 +1,5 @@
 pub struct DeviceCollection {
-    pub devices: Vec<Device>,
+    devices: Vec<Device>,
 }
 
 impl DeviceCollection {
@@ -13,6 +13,10 @@ impl DeviceCollection {
 
     pub fn add(&mut self, device: Device) {
         self.devices.push(device);
+    }
+
+    pub fn get(&self, idx: usize) -> Option<&Device> {
+        self.devices.get(idx)
     }
 }
 
