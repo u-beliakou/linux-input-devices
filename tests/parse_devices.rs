@@ -4,7 +4,7 @@ mod test_parse_devices {
 
     #[test]
     fn happy_path() {
-        let collection = parse_devices("./assets/output_example.txt");
+        let collection = parse_devices("./assets/example.txt");
         assert_eq!(collection.iter().count(), 2);
 
         let device = collection.get(0).unwrap();
