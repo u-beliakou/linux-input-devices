@@ -6,6 +6,8 @@ use crate::parser::{
     DV_PROP_UNIQ, DV_PROP_VENDOR, DV_PROP_VERSION
 };
 
+
+#[derive(Debug)]
 pub struct DeviceCollection {
     devices: Vec<Device>,
 }
@@ -33,7 +35,7 @@ impl DeviceCollection {
 }
 
 #[allow(unused)]
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct Device {
     pub identifier: DeviceIdentifier,
     pub name: String,
@@ -45,7 +47,7 @@ pub struct Device {
 }
 
 #[allow(unused)]
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct DeviceIdentifier
 {
     pub bus: String,
@@ -55,7 +57,7 @@ pub struct DeviceIdentifier
 }
 
 #[allow(unused)]
-#[derive(Default)]
+#[derive(Default, Debug)]
 pub struct DeviceBitmaps {
     pub prop: String,
     pub ev: String,
