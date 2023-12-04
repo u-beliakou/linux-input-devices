@@ -1,11 +1,19 @@
 #[cfg(test)]
 mod test_parse_devices {
+    use std::{io, mem};
+    use std::io::Error;
+    use linux_input_devices::errors::DeviceParseError;
     use linux_input_devices::parse_devices;
 
     #[test]
     fn returns_error_on_file_does_not_exist() {
-        let result = parse_devices("/something/not/existing");
-        assert!(result.is_err());
+        let error = parse_devices("/something/not/existing").unwrap_err();
+
+        let expected = DeviceParseError::IoError (
+            Error::new(io::ErrorKind::NotFound, "No such file or directory")
+        );
+        assert_eq!(mem::discriminant(&expected), mem::discriminant(&error));
+        assert_eq!("No such file or directory (os error 2)", error.to_string());
     }
 
     #[test]
