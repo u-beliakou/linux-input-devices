@@ -35,6 +35,8 @@ pub const DV_BITMAP_SND: &'static str = "SND";
 pub const DV_BITMAP_FF: &'static str = "FF";
 pub const DV_BITMAP_SW: &'static str = "SW";
 
+const IDENTIFIER_LINE_KEYS: [&str; 4] = [DV_PROP_BUS, DV_PROP_VENDOR, DV_PROP_PRODUCT, DV_PROP_VERSION];
+
 pub fn into_hashmap(lines: &Vec<String>) -> ParseResult<HashMap<String, String>> {
     let mut map: HashMap<String, String> = HashMap::new();
 
@@ -66,10 +68,9 @@ fn parse_identifier_line_into_hashmap(line: &String, map: &mut HashMap<String, S
         .captures(line)
         .ok_or(DeviceParseError::FormatError)?;
 
-    map.insert(String::from(DV_PROP_BUS), standardize_value(&caps[DV_PROP_BUS]));
-    map.insert(String::from(DV_PROP_VENDOR), standardize_value(&caps[DV_PROP_VENDOR]));
-    map.insert(String::from(DV_PROP_PRODUCT), standardize_value(&caps[DV_PROP_PRODUCT]));
-    map.insert(String::from(DV_PROP_VERSION), standardize_value(&caps[DV_PROP_VERSION]));
+    for key in IDENTIFIER_LINE_KEYS {
+        map.insert(String::from(key), standardize_value(&caps[key]));
+    }
 
     Ok(())
 }
