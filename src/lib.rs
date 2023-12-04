@@ -1,6 +1,6 @@
 use crate::devices::{DeviceBuilder, DeviceCollection};
 use reader::{InputDeviceReader};
-use crate::errors::DeviceParseError;
+pub use crate::errors::DeviceParseError;
 
 pub mod devices;
 pub mod reader;
