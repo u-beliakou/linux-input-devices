@@ -21,5 +21,5 @@ pub fn parse_devices(file_path: &str) -> Result<DeviceCollection, DeviceParseErr
         device_collection.add(device);
     }
 
-    return Ok(device_collection);
+    Ok(device_collection)
 }

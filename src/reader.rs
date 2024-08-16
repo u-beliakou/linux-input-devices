@@ -30,6 +30,6 @@ impl Iterator for InputDeviceReader {
             return Some(device_block);
         }
 
-        return None;
+        None
     }
 }
