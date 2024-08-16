@@ -57,4 +57,18 @@ mod test_device_collection {
         let found_device = collection.find_one_by_name("Expected");
         assert_eq!("Expected", found_device.unwrap().name);
     }
+
+    #[test]
+    fn device_from_collection_is_cloneable() {
+        let mut collection = DeviceCollection::new();
+
+        collection.add(
+            DeviceBuilder::build_with_name("Expected")
+        );
+
+        let found_device = collection.find_one_by_name("Expected");
+        let cloned_device = found_device.unwrap().clone();
+
+        assert_eq!("Expected", cloned_device.name);
+    }
 }

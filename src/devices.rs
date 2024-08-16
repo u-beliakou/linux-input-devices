@@ -35,7 +35,7 @@ impl DeviceCollection {
 }
 
 #[allow(unused)]
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct Device {
     pub identifier: DeviceIdentifier,
     pub name: String,
@@ -47,7 +47,7 @@ pub struct Device {
 }
 
 #[allow(unused)]
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct DeviceIdentifier
 {
     pub bus: String,
@@ -57,7 +57,7 @@ pub struct DeviceIdentifier
 }
 
 #[allow(unused)]
-#[derive(Default, Debug)]
+#[derive(Default, Debug, Clone)]
 pub struct DeviceBitmaps {
     pub prop: String,
     pub ev: String,
